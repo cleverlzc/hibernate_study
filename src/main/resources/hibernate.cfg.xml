@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/hibernate_study</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <!--c3p0连接池的最大连接数-->
+        <property name="hibernate.c3p0.max_size">200</property>
+        <property name="hibernate.c3p0.min_size">2</property>
+        <property name="hibernate.c3p0.timeout">2000</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!--<property name="hibernate.format_sql">true</property>-->
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!--<mapping resource="entity/Student.hbm.xml"/>-->
+        <mapping class="entity.Student" />
+
+        <mapping class="entity.manytoone.Person" />
+        <mapping class="entity.manytoone.Address" />
+
+        <mapping class="entity.onetoone.Person1" />
+        <mapping class="entity.onetoone.Address1" />
+
+        <mapping class="entity.onetomany.Person2" />
+        <mapping class="entity.onetomany.Address2" />
+
+        <mapping class="entity.manytomany.Address3" />
+        <mapping class="entity.manytomany.Person3" />
+
+        <mapping class="entity.oneandmany.Person4" />
+        <mapping class="entity.oneandmany.Address4" />
+
+        <mapping class="entity.manyandmany.Person5" />
+        <mapping class="entity.manyandmany.Address5" />
+
+        <mapping class="entity.oneandone.Person6" />
+        <mapping class="entity.oneandone.Address6" />
+
+        <mapping class="entity.hql.HQLStudent" />
+        <mapping class="entity.hql.HQLTeacher" />
+
+        <mapping class="entity.criteria.CriteriaTeacher" />
+        <mapping class="entity.criteria.CriteriaStudent" />
+
+        <mapping class="entity.sql.SQLStudent" />
+        <mapping class="entity.sql.SQLTeacher" />
+
+    </session-factory>
+</hibernate-configuration>
+

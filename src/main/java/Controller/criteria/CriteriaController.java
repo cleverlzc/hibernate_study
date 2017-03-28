@@ -26,7 +26,7 @@ public class CriteriaController {
         Transaction ts = session.beginTransaction();
         try {
 
-            //Criteria,Restrictions
+            //Criteria,Restrictions关联实体条件过滤
             /*Criteria criteria = session.createCriteria(CriteriaTeacher.class)
                     .createCriteria("criteriaStudents")
                     .add(Restrictions.ne("name", "student 1"))
@@ -35,7 +35,7 @@ public class CriteriaController {
             List<CriteriaTeacher> criteriaTeacherList = criteria.list();
             for(CriteriaTeacher c : criteriaTeacherList) System.out.println(c.getName() + " | " + c.getCriteriaStudents().size());*/
 
-            //Criteria,Projection,Projections,Property
+            //Criteria,Projection,Projections,Property获取部分列
             Criteria criteria = session.createCriteria(CriteriaStudent.class)
                     .setProjection(Projections.projectionList()
                             .add(Property.forName("id"))

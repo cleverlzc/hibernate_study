@@ -24,7 +24,7 @@ public class SQLController {
 
         //返回结果映射到多张表,多张表有重复字段会出现混淆,（解决方案改为不同名）;一对多时，多的一方取到的总是第一条（解决方案用多的一方关联1的一方）
         try {
-            String sql = "SELECT t.*,s.* FROM sql_teacher t LEFT JOIN sql_student s ON t.id = s.teacher_id";
+            /*String sql = "SELECT t.*,s.* FROM sql_teacher t LEFT JOIN sql_student s ON t.id = s.teacher_id";
             SQLQuery sqlQuery = session.createSQLQuery(sql)
                     .addEntity("t", SQLTeacher.class)
                     .addEntity("s", SQLStudent.class);
@@ -34,9 +34,9 @@ public class SQLController {
                 SQLTeacher sqlTeacher = (SQLTeacher) objects[0];
                 SQLStudent sqlStudent = (SQLStudent) objects[1];
                 System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getName());
-            }
+            }*/
 
-            /*String sql = "SELECT s.*,t.*  FROM sql_student s LEFT JOIN sql_teacher t ON s.teacher_id = t.id ";
+            String sql = "SELECT s.*,t.*  FROM sql_student s LEFT JOIN sql_teacher t ON s.teacher_id = t.id ";
             SQLQuery sqlQuery = session.createSQLQuery(sql)
                     .addEntity("s", SQLStudent.class)
                     .addEntity("t", SQLTeacher.class);
@@ -46,7 +46,7 @@ public class SQLController {
                 SQLStudent sqlStudent = (SQLStudent) objects[0];
                 SQLTeacher sqlTeacher = (SQLTeacher) objects[1];
                 System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getName());
-            }*/
+            }
 
             /*String sql = "SELECT * FROM sql_teacher WHERE id = :id";
             SQLQuery sqlQuery = session.createSQLQuery(sql).addEntity(SQLTeacher.class);

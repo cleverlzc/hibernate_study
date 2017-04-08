@@ -59,6 +59,8 @@
         <mapping class="entity.sql.SQLStudent" />
         <mapping class="entity.sql.SQLTeacher" />
 
+        <mapping class="entity.transaction.TransactionTest" />
+
     </session-factory>
 </hibernate-configuration>
 

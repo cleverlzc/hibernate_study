@@ -24,7 +24,7 @@ public class SQLController {
 
         //返回结果映射到多张表,多张表有重复字段会出现混淆,（解决方案改为不同名）;一对多时，多的一方取到的总是第一条（解决方案用多的一方关联1的一方）
         try {
-            /*String sql = "SELECT t.*,s.* FROM sql_teacher t LEFT JOIN sql_student s ON t.id = s.teacher_id";
+            String sql = "SELECT t.*,s.* FROM sql_teacher t LEFT JOIN sql_student s ON t.tid = s.teacher_id";
             SQLQuery sqlQuery = session.createSQLQuery(sql)
                     .addEntity("t", SQLTeacher.class)
                     .addEntity("s", SQLStudent.class);
@@ -33,10 +33,10 @@ public class SQLController {
                 Object[] objects = (Object[]) obj;
                 SQLTeacher sqlTeacher = (SQLTeacher) objects[0];
                 SQLStudent sqlStudent = (SQLStudent) objects[1];
-                System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getName());
-            }*/
+                System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getTname());
+            }
 
-            String sql = "SELECT s.*,t.*  FROM sql_student s LEFT JOIN sql_teacher t ON s.teacher_id = t.id ";
+            /*String sql = "SELECT s.*,t.*  FROM sql_student s LEFT JOIN sql_teacher t ON s.teacher_id = t.tid ";
             SQLQuery sqlQuery = session.createSQLQuery(sql)
                     .addEntity("s", SQLStudent.class)
                     .addEntity("t", SQLTeacher.class);
@@ -45,8 +45,8 @@ public class SQLController {
                 Object[] objects = (Object[]) obj;
                 SQLStudent sqlStudent = (SQLStudent) objects[0];
                 SQLTeacher sqlTeacher = (SQLTeacher) objects[1];
-                System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getName());
-            }
+                System.out.println(sqlStudent.getSname() + " | " + sqlTeacher.getTname());
+            }*/
 
             /*String sql = "SELECT * FROM sql_teacher WHERE id = :id";
             SQLQuery sqlQuery = session.createSQLQuery(sql).addEntity(SQLTeacher.class);
@@ -55,21 +55,21 @@ public class SQLController {
 
 
             /*SQLTeacher t = new SQLTeacher();
-            t.setName("teacher 3");
+            t.setTname("teacher 3");
             Serializable id = session.save(t);
             t = (SQLTeacher) session.get(SQLTeacher.class, id);
 
             SQLStudent s1 = new SQLStudent();
             s1.setSname("student 1");
-            s1.setTeacherId(t.getId());
+            s1.setSqlTeacher(t);
 
             SQLStudent s2 = new SQLStudent();
             s2.setSname("student 2");
-            s2.setTeacherId(t.getId());
+            s2.setSqlTeacher(t);
 
             SQLStudent s3 = new SQLStudent();
             s3.setSname("student 3");
-            s3.setTeacherId(t.getId());
+            s3.setSqlTeacher(t);
 
             session.save(s1);
             session.save(s2);

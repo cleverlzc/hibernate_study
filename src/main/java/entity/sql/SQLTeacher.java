@@ -3,6 +3,7 @@ package entity.sql;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,10 +18,12 @@ import javax.persistence.Table;
 public class SQLTeacher {
     @Id
     @GeneratedValue
+    @Column(name = "tid")
     private Long id;
-    private String name;
-    /*@OneToMany(targetEntity = SQLStudent.class)
-    private Set<SQLStudent> sqlStudents = new HashSet<SQLStudent>();*/
+    @Column(name = "tname")
+    private String tname;
+    @OneToMany(targetEntity = SQLStudent.class, mappedBy = "sqlTeacher")
+    private Set<SQLStudent> sqlStudents = new HashSet<SQLStudent>();
 
     public Long getId() {
         return id;
@@ -30,19 +33,19 @@ public class SQLTeacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTname() {
+        return tname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTname(String tname) {
+        this.tname = tname;
     }
 
-    /*public Set<SQLStudent> getSqlStudents() {
+    public Set<SQLStudent> getSqlStudents() {
         return sqlStudents;
     }
 
     public void setSqlStudents(Set<SQLStudent> sqlStudents) {
         this.sqlStudents = sqlStudents;
-    }*/
+    }
 }

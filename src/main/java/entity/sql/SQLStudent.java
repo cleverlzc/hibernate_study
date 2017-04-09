@@ -17,13 +17,15 @@ import javax.persistence.Table;
 public class SQLStudent {
     @Id
     @GeneratedValue
+    @Column(name = "sid")
     private Long id;
+    @Column(name = "sname")
     private String sname;
-    /*@ManyToOne(targetEntity = SQLTeacher.class)
-    @JoinColumn(name = "teacher_id", referencedColumnName = "id", nullable = false)
-    private SQLTeacher sqlTeacher;*/
-    @Column(name = "teacher_id")
-    private Long teacherId;
+    @ManyToOne(targetEntity = SQLTeacher.class)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "tid", nullable = false)
+    private SQLTeacher sqlTeacher;
+    //@Column(name = "teacher_id")
+    //private Long teacherId;
 
     public Long getId() {
         return id;
@@ -41,19 +43,19 @@ public class SQLStudent {
         this.sname = sname;
     }
 
-/*public SQLTeacher getSqlTeacher() {
+    public SQLTeacher getSqlTeacher() {
         return sqlTeacher;
     }
 
     public void setSqlTeacher(SQLTeacher sqlTeacher) {
         this.sqlTeacher = sqlTeacher;
-    }*/
+    }
 
-    public Long getTeacherId() {
+    /*public Long getTeacherId() {
         return teacherId;
     }
 
     public void setTeacherId(Long teacherId) {
         this.teacherId = teacherId;
-    }
+    }*/
 }
